@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .alert{
+            width: 290px;
+            height: 150px;
+            background-color: aqua;
+            position: absolute;
+            left: 800px;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app2">
+        <!--按钮-->
+        <button @click="showIt">显示对话框</button>
+
+        <div v-show="show" class="alert">
+            <!--要显示的一些内容-->
+            你的浏览器版本过低，请升级浏览器！
+            <!--点击后关闭-->
+            <span @click="hideIt">X</span>
+        </div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:"#app2",
+            data:{
+                show:false,//是否显示实例变量
+            },
+            methods:{
+                //打开对话框
+                showIt(){
+                    this.show = true;
+                },
+                //关闭对话框
+                hideIt(){
+                    this.show = false;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
