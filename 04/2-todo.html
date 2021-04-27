@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <todo></todo>
+    </div>
+
+    <script>
+        var todoAdd = {
+            template: `
+                <div>
+                    <input type="text"/><button>+</button>
+                </div>
+                `,
+        }
+
+        var todoItem = {
+            template: `
+                       <li>{{i+1}}- {{mytask}}<button>x</button></li>
+                      `,
+            props:["mytask","i"],
+        }
+
+        var todoList = {
+            template: `<div>
+                        <ul v-for="(task,i) of mytasks" :key="i">
+                            <todo-item :mytask="task" :i="i"></todo-item>
+                        </ul>
+                      </div>`,
+            components: {
+                todoItem
+            },
+            props:["mytasks"],
+        }
+        //定义组件todo,并注册，这种注册时全局注册
+        Vue.component('todo', {
+            template: `
+                <div>
+                    <h1>待办事项列表</h1>
+                    <todo-add></todo-add>
+                    <todo-list :mytasks="tasks"></todo-list>
+                </div>
+                `,
+            components: {
+                todoAdd, todoList
+            },
+            data(){
+                return{
+                    tasks:["吃饭","睡觉","学习","打游戏"]
+                }
+            }
+        });
+
+        var vm = new Vue({
+            el: "#app",
+            data: {},
+            methods: {
+
+            }
+        })
+
+
+    </script>
+
+</body>
+
+</html>
