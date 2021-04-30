@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--0:引入 vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--0:引入 vue-router.js-->
+    <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+    <script src="3_index.js"></script>
+    <script src="3_details.js"></script>
+    <script src="3_products.js"></script>
+    <script src="3_not_found.js"></script>
+    <!--自定义路由（包含路由器字典）-->
+    <script src="3_router.js"></script>
+</head>
+
+<body>
+    <!--做界面-->
+    <div id="app">
+        <router-view></router-view>
+    </div>
+</body>
+<script>
+    //定义M 数据
+    //var data = {n:12};
+
+
+    //创建vue实例  vm
+    var vm = new Vue({
+        //
+        el: "#app",
+        data: {},
+        methods: {
+        },
+        router:router,
+
+    })
+
+</script>
+
+</html>
